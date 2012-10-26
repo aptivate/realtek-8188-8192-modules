@@ -1,8 +1,9 @@
 
 CC = gcc
 KVER  := $(shell uname -r)
-KSRC := /lib/modules/$(KVER)/build
-MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/rtlwifi
+MODDIR := /lib/modules/$(KVER)
+KSRC := $(MODDIR)/build
+MODDESTDIR := $(MODDIR)/kernel/drivers/net/wireless/rtlwifi
 FIRMWAREDIR := /lib/firmware/
 PWD := $(shell pwd)
 CLR_MODULE_FILES := *.mod.c *.mod *.o .*.cmd *.ko *~ .tmp_versions* modules.order Module.symvers
@@ -32,8 +33,8 @@ all:
 	@cp $(SYMBOL_FILE) rtl8192de/
 	@make -C rtl8192de/
 install: all
-	find /lib/modules/$(shell uname -r) -name "r8192se_*.ko" -exec rm {} \;
-	find /lib/modules/$(shell uname -r) -name "r8192ce_*.ko" -exec rm {} \;
+	find $(MODDIR) -name "r8192se_*.ko" -exec rm {} \;
+	find $(MODDIR) -name "r8192ce_*.ko" -exec rm {} \;
 	@rm -fr $(FIRMWAREDIR)/`uname -r`/rtlwifi
 
 	$(shell rm -fr $(MODDESTDIR))

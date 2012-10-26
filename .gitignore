@@ -1,0 +1,11 @@
+*.o
+*.mod.c
+*.cmd
+*.ko
+.tmp_versions
+modules.order
+Module.symvers
+*-stamp
+debian/control
+debian/files
+debian/realtek-8188-8192-modules-*

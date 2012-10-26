@@ -1,27 +1,21 @@
-Source: openswan
+Source: realtek-8188-8192-modules
 Section: net
 Priority: optional
 Maintainer: $KMAINT <$KEMAIL>
 Standards-Version: 3.9.2
-Vcs-Browser: http://git.debian.org/?p=pkg-swan/openswan.git;a=summary
-Vcs-Git: git://git.debian.org/git/pkg-swan/openswan.git
+Vcs-Browser: https://github.com/aptivate/realtek-8188-8192-modules
+Vcs-Git: git://github.com/aptivate/realtek-8188-8192-modules.git
 Build-Depends: debhelper
-Homepage: http://www.openswan.org/
+Homepage: https://github.com/aptivate/realtek-8188-8192-modules
 
-Package: openswan-modules-$KVERS
+Package: realtek-8188-8192-modules-$KVERS
 Architecture: linux-any
 Section: kernel
 Recommends: linux-image-$KVERS (= $KDREV)
-Description: Internet Key Exchange daemon - binary kernel module
- Openswan is an IPsec based VPN solution for the Linux kernel. It can use the
- native IPsec stack as well as the KLIPS kernel module. Both IKEv1 and IKEv2
- protocols are supported.
- .
- For support of the old-style KLIPS ipsecX network interfaces a custom
- kernel module is needed.
- .
- This package contains the Openswan binary kernel module for the Linux
- kernel version $KVERS.
- .
- Kernel versions >= 2.6.23 no longer need to be patched to provide NAT
- Traversal support for KLIPS.
+Description: Realtek RTL8188 and RTL8192 drivers for Debian kernels
+ Release Date: 2011-12-30, ver 0005.
+ Realtek Linux mac80211 based driver.
+ This driver supports follwing RealTek PCIE Wireless LAN NICs:
+ RTL8188CE/RTL8192CE
+ RTL8191SE/RTL8192SE
+ RTL8192DE

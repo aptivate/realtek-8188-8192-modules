@@ -57,7 +57,7 @@ export KERNELSRC=${KSRC}
 
 # this primarily sets ARCH, we may be able to do that in another way
 # but it also defines IPSECVERSION, which is needed below
-include Makefile.inc
+# include Makefile.inc
 
 debian/control: debian/control.in
 	if ! test -f $@; then \
@@ -83,7 +83,7 @@ build: debian/control debian/docs debian/lintian-overrides configure-stamp build
 build-stamp:
 	dh_testdir
 
-	$(MAKE) modules
+	$(MAKE) all
 
 	touch build-stamp
 
@@ -109,7 +109,7 @@ install: build
 	dh_prep
 	dh_installdirs
 
-	$(MAKE) modules_install INSTALL_MOD_PATH=$(MODDESTDIR)
+	$(MAKE) MODDIR=$(MODDESTDIR)/modules/$(KVERS) FIRMWAREDIR=$(MODDESTDIR)/firmware
 
 # Build architecture-independent files here.
 binary-indep: build install
@@ -121,7 +121,7 @@ binary-arch: build install
 	dh_testroot
 	dh_installdocs
 	dh_installmodules
-	dh_installchangelogs CHANGES
+	dh_installchangelogs
 	dh_compress
 	dh_fixperms
 	dh_lintian
