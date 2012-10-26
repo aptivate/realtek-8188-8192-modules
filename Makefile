@@ -32,13 +32,14 @@ all:
 	@make -C rtl8192se/
 	@cp $(SYMBOL_FILE) rtl8192de/
 	@make -C rtl8192de/
-install: all
+
+install-bin: all
 	find $(MODDIR) -name "r8192se_*.ko" -exec rm {} \;
 	find $(MODDIR) -name "r8192ce_*.ko" -exec rm {} \;
 	@rm -fr $(FIRMWAREDIR)/`uname -r`/rtlwifi
 
 	$(shell rm -fr $(MODDESTDIR))
-	$(shell mkdir $(MODDESTDIR))
+	$(shell mkdir -p $(MODDESTDIR))
 	$(shell mkdir $(MODDESTDIR)/rtl8192se)
 	$(shell mkdir $(MODDESTDIR)/rtl8192ce)
 	$(shell mkdir $(MODDESTDIR)/rtl8192de)
@@ -47,12 +48,13 @@ install: all
 	@install -p -m 644 ./rtl8192ce/rtl8192ce.ko $(MODDESTDIR)/rtl8192ce
 	@install -p -m 644 ./rtl8192de/rtl8192de.ko $(MODDESTDIR)/rtl8192de
 
-	@depmod -a
-
 	@#copy firmware img to target fold
 	@#$(shell [ -d "$(FIRMWAREDIR)/`uname -r`" ] && cp -fr firmware/rtlwifi/ $(FIRMWAREDIR)/`uname -r`/.)
 	@#$(shell [ ! -d "$(FIRMWAREDIR)/`uname -r`" ] && cp -fr firmware/rtlwifi/ $(FIRMWAREDIR)/.)
 	@cp -fr firmware/rtlwifi/ $(FIRMWAREDIR)/
+
+install: install-bin
+	@depmod -a
 
 uninstall:
 	$(shell [ -d "$(MODDESTDIR)" ] && rm -fr $(MODDESTDIR))

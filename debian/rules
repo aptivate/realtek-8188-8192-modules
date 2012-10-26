@@ -109,7 +109,8 @@ install: build
 	dh_prep
 	dh_installdirs
 
-	$(MAKE) MODDIR=$(MODDESTDIR)/modules/$(KVERS) FIRMWAREDIR=$(MODDESTDIR)/firmware
+	mkdir -p $(MODDESTDIR)/firmware
+	$(MAKE) MODDIR=$(MODDESTDIR)/modules/$(KVERS) FIRMWAREDIR=$(MODDESTDIR)/firmware install-bin
 
 # Build architecture-independent files here.
 binary-indep: build install
