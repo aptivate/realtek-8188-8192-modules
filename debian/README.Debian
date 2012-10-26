@@ -1,0 +1,25 @@
+Realtek RTL8188 and RTL8192 drivers for Debian
+----------------------
+
+This package has been created from scratch based on
+92ce_se_de_linux_mac80211_0005.1230.2011.tar.gz, downloaded from the Realtek
+website at:
+http://www.realtek.com.tw/downloads/downloadsView.aspx?Langid=1&PNid=21&PFid=48&Level=5&Conn=4&DownTypeID=3&GetDown=false&Downloads=true#2722
+
+Release Date: 2011-12-30, ver 0005
+Realtek Linux mac80211 based driver:
+   --This driver supports follwing RealTek PCIE Wireless LAN NICs:
+        RTL8188CE/RTL8192CE
+        RTL8191SE/RTL8192SE
+        RTL8192DE
+
+This Debian package was created for iSchool to allow building the latest
+official Realtek drivers for use with a standard (non-Ubuntu) kernel on
+iSchool Classmate laptops, where standard kernels don't support the
+wireless card for some reason (no firmware?).
+
+We're not using DKMS because the iSchool Classmates don't have kernel
+source installed on them, to save disk space, and we rarely change kernels,
+so it's more convenient to build a driver package out of tree.
+
+Created by Chris Wilson of Aptivate (http://www.aptivate.org).
